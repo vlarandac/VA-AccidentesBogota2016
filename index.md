@@ -1,7 +1,7 @@
 
 # Accidentalidad en Bogotá en el año 2016 
 
-## Definición de Accidentes de Tránsito
+### Definición de Accidentes de Tránsito
 
 Accidentes de Tránsito: Definiciones de la Ley 769 de 2002 – Código Nacional de Tránsito
 – “Evento generalmente involuntario, generado al menos por un vehículo en movimiento, que causa daños a personas y bienes involucrados en él e igualmente afecta la normal circulación de los vehículos que se movilizan por la vía o vías comprendidas en el lugar o dentro de la zona de influencia del hecho.”
@@ -14,13 +14,14 @@ El datasset elegido esta compuesto por 34931 Filas y 38 Columnas que presentan l
 
 La fecha de carga del dataset fue el 11 de mayo de 2017 y fué la única carga que se hizo.
 
-## Lo que se espera lograr:
-○ Comparar los días en los cuales se presentaron más accidentes durante el año 2016 en la ciudad de Bogotá.</br>
-○ Presentar cuáles fueron las localidades de Bogotá con mayor cantidad de accidentes para los distintos meses del año 2016.</br>
+### Lo que se espera lograr:
+○ Comparar los días en los cuales se presentaron más accidentes durante el año 2016 en la ciudad de Bogotá.
+○ Presentar cuáles fueron las localidades de Bogotá con mayor cantidad de accidentes para los distintos meses del año 2016.
 
-Hipotesis: Existen meses del año y días en los cuales se presentan mayor cantidad de accidentes.
+Hipotesis 1: Las localidades con mayor canidad de accidentes son las que mayor población residente tienen.
+Hipotesis 2: Existen meses del año y días en los cuales se presentan mayor cantidad de accidentes.
 
-## Análisis e Insights
+#$# Análisis e Insights
          	 
 <title>Accidentalidad por localidad en Bogotá en el año 2016</title>
 <html lang="en">
@@ -146,14 +147,14 @@ function type(d, _, columns) {
 </html>
 
 
-Podemos observar que para el año 2016 existe una clara evidencia de cuáles fueron las localidades con mayor y menor cantidad de accidentes reportados, así vemos que la clara tendencia es que la localidad con menos cantidad de accidentes reportados es la localidad de La Candelaria, la cual presenta por gran diferencia muchos menos accidentes que las demás localidades, y es un comportamiento que se mantiene a lo largo de todo el año.   Así mismo se puede ver que la localidad que mayor cantidad de accidentes reportó fue la localidad de Kennedy, que junto con la localidad de Suba y Engativa reportaron una cifra cercana a los 220 accidentes al iniciar el año, y posteriormente presentaron un incremento más notorio en los meses de mayo y noviembre para Keneddy, y en abril, julio y octubre para Engativa.   
+Podemos observar que para el año 2016 existe una clara evidencia de cuáles fueron las localidades con mayor y menor cantidad de accidentes reportados, así vemos que la clara tendencia es que la localidad con menos cantidad de accidentes reportados es la localidad de La Candelaria, la cual presenta por gran diferencia muchos menos accidentes que las demás localidades, y es un comportamiento que se mantiene a lo largo de todo el año.   Así mismo se puede ver que la localidad que mayor cantidad de accidentes reportó fue la localidad de Kennedy, que junto con la localidad de Suba y Engativa reportaron una cifra cercana a los 220 accidentes al iniciar el año, y posteriormente presentaron un incremento más notorio en los meses de mayo y noviembre para Kennedy, y en abril, julio y octubre para Engativa.   
 
-De acuerdo con nuestra gráfica podemos decir que varis de las localidades permanecieron con una cifra entre los 50 y 100 accidentes mensuales a lo largo del año, como es el caso de Tunjuelito, Rafael Uribe Uribe, Santa Fe, San Cristobal, Antonio Nariño y Usme. Y localidades como Suba, Fontibón, Puente Aranda y Chapinero fluctúan entre los 100 y 250 accidentes mensuales a lo largo del año. 
+De acuerdo con nuestra gráfica podemos decir que varias de las localidades permanecieron con una cifra entre los 50 y 100 accidentes mensuales a lo largo del año, como es el caso de Tunjuelito, Rafael Uribe Uribe, Santa Fe, San Cristobal, Antonio Nariño y Usme. Y localidades como Fontibón, Puente Aranda y Chapinero fluctúan entre los 100 y 250 accidentes mensuales a lo largo del año. 
 
 De igual manera podemos ver en la siguiente gráfica cómo estuvieron distribuidos los accidentes a los largo del año en toda la ciudad, y al igual que en la gráfica anterior es de notar que hacia el final de año, en los meses de octubre, noviembre y diciembre se presentaron la mayor cantidad de accidentes. 
 
 <div>
-<h4>Accidentalidad por día</h4>
+<h4>Accidentalidad diaria en 2016</h4>
 </div>
 
 <style>
@@ -283,11 +284,11 @@ d3.csv("accidentes_diarios_bogota.csv", function(response){
 })
 </script>
 
-<div class="jumbotron" ng-show="isSet(1)">
+De acuerdo con la Secretaría Distrital de Planeación en su [Boletin 69 de Proyecciones de población por Localidades] http://www.sdp.gov.co/portal/page/portal/PortalSDP/InformacionTomaDecisiones/Estadisticas/Bogot%E1%20Ciudad%20de%20Estad%EDsticas/2014/Bolet%EDn69.pdf se indica que cinco las localidades con mayor población proyectada para 2016 fueron Suba(1.250.734), Kennedy (1.187.315), Usaquen (472.908), Engativa (873.243) y Fontibón (403.519), lo cual nos permite validar nuestra hipótesis de que las localidades con mayor población son las que reportan mayor cantidad de accidentes. 
 
+<div>
           	<p>Vivian Lucia Aranda</p>
 			<p>{vl.aranda140}@uniandes.edu.co</p>
 			<p>ISIS4822 – Visual Analytics - 20172 </p>			
-            <br/><br/>
             <p>Universidad de los Andes, Bogotá, Colombia</p>
       </div>
