@@ -21,7 +21,7 @@ La fecha de carga del dataset fue el 11 de mayo de 2017 y fué la única carga q
 Hipotesis 1: Las localidades con mayor canidad de accidentes son las que mayor población residente tienen.
 Hipotesis 2: Existen meses del año y días en los cuales se presentan mayor cantidad de accidentes.
 
-#$# Análisis e Insights
+### Análisis e Insights
          	 
 <title>Accidentalidad por localidad en Bogotá en el año 2016</title>
 <html lang="en">
@@ -284,11 +284,9 @@ d3.csv("accidentes_diarios_bogota.csv", function(response){
 })
 </script>
 
-De acuerdo con la Secretaría Distrital de Planeación en su [Boletin 69 de Proyecciones de población por Localidades] http://www.sdp.gov.co/portal/page/portal/PortalSDP/InformacionTomaDecisiones/Estadisticas/Bogot%E1%20Ciudad%20de%20Estad%EDsticas/2014/Bolet%EDn69.pdf se indica que cinco las localidades con mayor población proyectada para 2016 fueron Suba(1.250.734), Kennedy (1.187.315), Usaquen (472.908), Engativa (873.243) y Fontibón (403.519), lo cual nos permite validar nuestra hipótesis de que las localidades con mayor población son las que reportan mayor cantidad de accidentes. 
+De acuerdo con la Secretaría Distrital de Planeación en su [Boletin 69 de Proyecciones de población por Localidades] (http://www.sdp.gov.co/portal/page/portal/PortalSDP/InformacionTomaDecisiones/Estadisticas/Bogot%E1%20Ciudad%20de%20Estad%EDsticas/2014/Bolet%EDn69.pdf) se indica que cinco las localidades con mayor población proyectada para 2016 fueron Suba(1.250.734), Kennedy (1.187.315), Usaquen (472.908), Engativa (873.243) y Fontibón (403.519), lo cual nos permite validar nuestra hipótesis de que las localidades con mayor población son las que reportan mayor cantidad de accidentes. 
 
-<div>
-          	<p>Vivian Lucia Aranda</p>
-			<p>{vl.aranda140}@uniandes.edu.co</p>
-			<p>ISIS4822 – Visual Analytics - 20172 </p>			
-            <p>Universidad de los Andes, Bogotá, Colombia</p>
-      </div>
+Vivian Lucia Aranda
+201022509
+ISIS4822 – Visual Analytics - 20172			
+Universidad de los Andes, Bogotá, Colombia
