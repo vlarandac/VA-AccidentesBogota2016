@@ -15,10 +15,13 @@ El datasset elegido esta compuesto por 34931 Filas y 38 Columnas que presentan l
 La fecha de carga del dataset fue el 11 de mayo de 2017 y fué la única carga que se hizo.
 
 ## Lo que se espera lograr:
-○ Comparar los días en los cuales se presentaron más accidentes durante el año 2016 en la ciudad de Bogotá.
-○ Presentar cuáles fueron las localidades de Bogotá con mayor cantidad de accidentes para los distintos meses del año 2016.
+○ Comparar los días en los cuales se presentaron más accidentes durante el año 2016 en la ciudad de Bogotá.</br>
+○ Presentar cuáles fueron las localidades de Bogotá con mayor cantidad de accidentes para los distintos meses del año 2016.</br>
 
-Hipotesis: las localidades con mayor población presentan mayor cantidad de accidentes.
+Hipotesis: Existen meses del año y días en los cuales se presentan mayor cantidad de accidentes.
+
+## Insights
+
 
 <html lang="en">
 <meta charset="utf-8">
@@ -196,10 +199,146 @@ function type(d, _, columns) {
 </script>
 </html>
 
-## Insights
 
 Podemos observar que para el año 2016 existe una clara evidencia de cuáles fueron las localidades con mayor y menor cantidad de accidentes reportados, así vemos que la clara tendencia es que la localidad con menos cantidad de accidentes reportados es la localidad de La Candelaria, la cual presenta por gran diferencia muchos menos accidentes que las demás localidades, y es un comportamiento que se mantiene a lo largo de todo el año.   Así mismo se puede ver que la localidad que mayor cantidad de accidentes reportó fue la localidad de Kennedy, que junto con la localidad de Suba y Engativa reportaron una cifra cercana a los 220 accidentes al iniciar el año, y posteriormente presentaron un incremento más notorio en los meses de mayo y noviembre para Keneddy, y en abril, julio y octubre para Engativa.   
 
 De acuerdo con nuestra gráfica podemos decir que varis de las localidades permanecieron con una cifra entre los 50 y 100 accidentes mensuales a lo largo del año, como es el caso de Tunjuelito, Rafael Uribe Uribe, Santa Fe, San Cristobal, Antonio Nariño y Usme. Y localidades como Suba, Fontibón, Puente Aranda y Chapinero fluctúan entre los 100 y 250 accidentes mensuales a lo largo del año. 
 
 De igual manera podemos ver en la siguiente gráfica cómo estuvieron distribuidos los accidentes a los largo del año en toda la ciudad, y al igual que en la gráfica anterior es de notar que hacia el mes de octubre y noviembre se presentaron la mayor cantidad de accidentes. 
+
+<style>
+#calendar {
+  margin: 20px;
+}
+.month {
+  margin-right: 8px;
+}
+.month-name {
+  font-size: 85%;
+  fill: #777;
+  font-family: Arial, Helvetica;
+}
+.day.hover {
+  stroke: #6d6E70;
+  stroke-width: 2;
+}
+.day.focus {
+  stroke: #ffff33;
+  stroke-width: 2;
+}
+</style>
+<body>
+
+<div id="calendar"></div>
+
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script>
+
+function drawCalendar(dateData){
+
+  var weeksInMonth = function(month){
+    var m = d3.timeMonth.floor(month)
+    return d3.timeWeeks(d3.timeWeek.floor(m), d3.timeMonth.offset(m,1)).length;
+  }
+
+// elegir las fechas mínimas y máximas a mstrar en el calendario de acuerdo con los datos
+  var minDate = d3.min(dateData, function(d) { return new Date(d.Fecha) })
+  var maxDate = d3.max(dateData, function(d) { return new Date(d.Fecha) })
+
+//dimensiones de las celdas
+  var cellMargin = 2,
+      cellSize = 20;
+
+  var es_ES = {
+        "decimal": ",",
+        "thousands": ".",
+        "grouping": [3],
+        "currency": ["€", ""],
+        "dateTime": "%a %b %e %X %Y",
+        "date": "%d/%m/%Y",
+        "time": "%H:%M:%S",
+        "periods": ["AM", "PM"],
+        "days": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+        "shortDays": ["Dom", "Lun", "Mar", "Mi", "Jue", "Vie", "Sab"],
+        "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        "shortMonths": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+    };
+
+    var ES = d3.timeFormatLocale(es_ES);
+ 
+//formato de variables
+  var day = d3.timeFormat("%w"),
+      week = d3.timeFormat("%U"),
+      format = d3.timeFormat("%d-%m-%Y"),
+      titleFormat = d3.utcFormat("%a, %d-%b");
+      monthName = d3.timeFormat("%B"), // Fotmato del nombre del mes
+      months= d3.timeMonth.range(d3.timeMonth.floor(minDate), maxDate);
+
+  var svg = d3.select("#calendar").selectAll("svg")
+    .data(months)
+    .enter().append("svg")
+    .attr("class", "month")
+    .attr("height", ((cellSize * 7) + (cellMargin * 8) + 20) ) 
+    .attr("width", function(d) {
+      var columns = weeksInMonth(d);
+      return ((cellSize * columns) + (cellMargin * (columns + 1)));
+    })
+    .append("g")
+
+// definición de calendario
+  svg.append("text")
+    .attr("class", "month-name")
+    .attr("y", (cellSize * 7) + (cellMargin * 8) + 15 )
+    .attr("x", function(d) {
+      var columns = weeksInMonth(d);
+      return (((cellSize * columns) + (cellMargin * (columns + 1))) / 2);
+    })
+    .attr("text-anchor", "middle")
+    .text(function(d) { return monthName(d); })
+
+  var rect = svg.selectAll("rect.day")
+    .data(function(d, i) { return d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1)); })
+    .enter().append("rect")
+    .attr("class", "day")
+    .attr("width", cellSize)
+    .attr("height", cellSize)
+    .attr("rx", 3).attr("ry", 3) // esquinas redondeadas
+    .attr("fill", '#eaeaea') // relleno gris claro por defecto
+    .attr("y", function(d) { return (day(d) * cellSize) + (day(d) * cellMargin) + cellMargin; })
+    .attr("x", function(d) { return ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellSize) + ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellMargin) + cellMargin ; })
+    .on("mouseover", function(d) {
+      d3.select(this).classed('hover', true);
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).classed('hover', false);
+    })
+    .datum(format);
+
+  rect.append("title")
+    .text(function(d) { return titleFormat(new Date(d)); });
+
+  var lookup = d3.nest()
+    .key(function(d) { return d.Fecha; })
+    .rollup(function(leaves) {
+      return d3.sum(leaves, function(d){ return parseInt(d.Total); });
+    })
+    .object(dateData);
+
+  var scale = d3.scaleLinear()
+    .domain(d3.extent(dateData, function(d) { return parseInt(d.Total); }))
+    .range([0,1]); // Rango de colores
+
+  rect.filter(function(d) { return d in lookup; })
+    .style("fill", function(d) { return d3.interpolatePuBu(scale(lookup[d])); })
+    .select("title")
+    .text(function(d) { return titleFormat(new Date(d)) + ":  " + lookup[d]; });
+
+}
+
+// carga del archivo en formato csv
+d3.csv("accidentes_diarios_bogota.csv", function(response){
+  drawCalendar(response);
+})
+
+</script>
