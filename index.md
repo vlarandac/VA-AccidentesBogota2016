@@ -1,15 +1,15 @@
 
+# - Periodos de mayor accidentalidad en la ciudad de Bogotá en el año 2016 -
+
 ## Definición de Accidentes de Tránsito
 
 Accidentes de Tránsito: Definiciones de la Ley 769 de 2002 – Código Nacional de Tránsito
-– “Evento generalmente involuntario, generado al menos por un vehículo en movimiento, que causa daños a personas y bienes involucrados en él e igualmente afecta la normal
-circulación de los vehículos que se movilizan por la vía o vías comprendidas en el lugar o dentro de la zona de influencia del hecho.”
+– “Evento generalmente involuntario, generado al menos por un vehículo en movimiento, que causa daños a personas y bienes involucrados en él e igualmente afecta la normal circulación de los vehículos que se movilizan por la vía o vías comprendidas en el lugar o dentro de la zona de influencia del hecho.”
 
-# Descripción de los datos
+### ¿Qué hay en este Conjunto de Datos?
 
 #### [ACCIDENTES BOGOTÁ 2016](https://www.datos.gov.co/Transporte/2016-ACCIDENTES-DE-TR-NSITO-BOGOT-/79fi-zm8c)
 
-### ¿Qué hay en este Conjunto de Datos?
 El datasset elegido esta compuesto por 34931 Filas y 38 Columnas que presentan la información de todos los accidentes registrados en la ciudad de Bogotá durante el año 2016.  Se presentan caracterizaciones del tipo de accidente, gravedad, día y hora de ocurrencia, localidad y otros atributos de interes frente a los datos. 
 
 La fecha de carga del dataset fue el 11 de mayo de 2017 y fué la única carga que se hizo.
@@ -20,8 +20,7 @@ La fecha de carga del dataset fue el 11 de mayo de 2017 y fué la única carga q
 
 Hipotesis: Existen meses del año y días en los cuales se presentan mayor cantidad de accidentes.
 
-## Insights
-
+## Análisis e Insights
 
 <html lang="en">
 <meta charset="utf-8">
@@ -132,32 +131,6 @@ d3.tsv("accidentes_localidad_MES.tsv", type, function(error, data) {
       .attr("dy", "0.35em")
       .style("font", "8px sans-serif")
       .text(function(d) { return d.id; });
-
-  svg.selectAll("g.dot")
-        .data(data)
-        .enter().append("g")
-        .attr("class", "dot")
-        .selectAll("circle")
-        .data(function(d) { return d.values; })
-        .enter().append("circle")
-        .attr("r", 5)
-        .attr("cx", function(d,i) {  return x(d.MES); })
-        .attr("cy", function(d,i) { return y(d.value.accidentes); })
-
-// Tooltip stuff after this
-      .on("mouseover", function(d) {              // when the mouse goes over a circle, do the following
-      div.transition()                  // declare the transition properties to bring fade-in div
-        .duration(200)                  // it shall take 200ms
-        .style("opacity", .9);              // and go all the way to an opacity of .9
-      div .html(d.localidades + "<br/>" + d.MES + "<br/>"  + d.value.accidentes)  // add the text of the tooltip as html 
-        .style("left", (d3.event.pageX) + "px")     // move it in the x direction 
-        .style("top", (d3.event.pageY - 28) + "px");  // move it in the y direction
-      })                          // 
-    .on("mouseout", function(d) {             // when the mouse leaves a circle, do the following
-      div.transition()                  // declare the transition properties to fade-out the div
-        .duration(500)                  // it shall take 500ms
-        .style("opacity", 0);             // and go all the way to an opacity of nil
-    });   
 
 });
 
