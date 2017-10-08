@@ -42,19 +42,7 @@ Hipotesis: Existen meses del año y días en los cuales se presentan mayor canti
     stroke: #ed1e79; 
     stroke-width: 3;
 }
-.tooltip {
-    background: none repeat scroll 0 0 #ed1e79;
-    border: 0 solid #ffffff;
-    border-radius: 8px;
-    color: #ffffff;
-    font: 12px sans-serif;
-    height: 38px;
-    padding: 2px;
-    pointer-events: none;
-    position: absolute;
-    text-align: center;
-    width: 90px;
-}
+
 
 </style>
 <svg width="640" height="500"></svg>
@@ -78,23 +66,6 @@ var x = d3.scaleTime().range([0, width]), // escala de tiempo
     y = d3.scaleLinear().range([height, 0]), // escala lineal
     z = d3.scaleOrdinal(d3.schemeCategory10); // rango de colores  usar
 
-  // definición de nombres en español }  
-  var es_ES = {
-        "decimal": ",",
-        "thousands": ".",
-        "grouping": [3],
-        "currency": ["€", ""],
-        "dateTime": "%a %b %e %X %Y",
-        "date": "%d/%m/%Y",
-        "time": "%H:%M:%S",
-        "periods": ["AM", "PM"],
-        "days": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-        "shortDays": ["Dom", "Lun", "Mar", "Mi", "Jue", "Vie", "Sab"],
-        "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-        "shortMonths": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-    };
-
-    var ES = d3.timeFormatLocale(es_ES);
 // tipo de linea a utilizar en el gráfico y caracterización de los atributos mes y cantidad de accidentes.
 var line = d3.line()
     .curve(d3.curveBasis) // tipo de línea
@@ -204,7 +175,7 @@ Podemos observar que para el año 2016 existe una clara evidencia de cuáles fue
 
 De acuerdo con nuestra gráfica podemos decir que varis de las localidades permanecieron con una cifra entre los 50 y 100 accidentes mensuales a lo largo del año, como es el caso de Tunjuelito, Rafael Uribe Uribe, Santa Fe, San Cristobal, Antonio Nariño y Usme. Y localidades como Suba, Fontibón, Puente Aranda y Chapinero fluctúan entre los 100 y 250 accidentes mensuales a lo largo del año. 
 
-De igual manera podemos ver en la siguiente gráfica cómo estuvieron distribuidos los accidentes a los largo del año en toda la ciudad, y al igual que en la gráfica anterior es de notar que hacia el mes de octubre y noviembre se presentaron la mayor cantidad de accidentes. 
+De igual manera podemos ver en la siguiente gráfica cómo estuvieron distribuidos los accidentes a los largo del año en toda la ciudad, y al igual que en la gráfica anterior es de notar que hacia el final de año, en los meses de octubre, noviembre y diciembre se presentaron la mayor cantidad de accidentes. 
 
 <style>
 #calendar {
@@ -231,7 +202,7 @@ De igual manera podemos ver en la siguiente gráfica cómo estuvieron distribuid
 
 <div id="calendar"></div>
 
-<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script>
 
@@ -246,74 +217,60 @@ function drawCalendar(dateData){
   var minDate = d3.min(dateData, function(d) { return new Date(d.Fecha) })
   var maxDate = d3.max(dateData, function(d) { return new Date(d.Fecha) })
 
-//dimensiones de las celdas
   var cellMargin = 2,
       cellSize = 20;
 
-  var es_ES = {
-        "decimal": ",",
-        "thousands": ".",
-        "grouping": [3],
-        "currency": ["€", ""],
-        "dateTime": "%a %b %e %X %Y",
-        "date": "%d/%m/%Y",
-        "time": "%H:%M:%S",
-        "periods": ["AM", "PM"],
-        "days": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-        "shortDays": ["Dom", "Lun", "Mar", "Mi", "Jue", "Vie", "Sab"],
-        "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-        "shortMonths": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-    };
-
-    var ES = d3.timeFormatLocale(es_ES);
- 
-//formato de variables
   var day = d3.timeFormat("%w"),
       week = d3.timeFormat("%U"),
       format = d3.timeFormat("%d-%m-%Y"),
       titleFormat = d3.utcFormat("%a, %d-%b");
-      monthName = d3.timeFormat("%B"), // Fotmato del nombre del mes
+      monthName = d3.timeFormat("%B"), // Formato del nombre del mes
       months= d3.timeMonth.range(d3.timeMonth.floor(minDate), maxDate);
 
-  var svg = d3.select("#calendar").selectAll("svg")
+  
+    var svg = d3.select("#calendar").selectAll("svg")
     .data(months)
     .enter().append("svg")
-    .attr("class", "month")
-    .attr("height", ((cellSize * 7) + (cellMargin * 8) + 20) ) 
-    .attr("width", function(d) {
-      var columns = weeksInMonth(d);
-      return ((cellSize * columns) + (cellMargin * (columns + 1)));
-    })
+      .attr("class", "month")
+      .attr("width", (cellSize * 7) + (cellMargin * 8) )
+      .attr("height", function(d) {
+        var rows = weeksInMonth(d);
+        return (cellSize * rows) + (cellMargin * (rows + 1)) + 20; // the 20 is for the month labels
+      })
     .append("g")
 
-// definición de calendario
-  svg.append("text")
+    svg.append("text")
     .attr("class", "month-name")
-    .attr("y", (cellSize * 7) + (cellMargin * 8) + 15 )
-    .attr("x", function(d) {
-      var columns = weeksInMonth(d);
-      return (((cellSize * columns) + (cellMargin * (columns + 1))) / 2);
-    })
+    .attr("x", ((cellSize * 7) + (cellMargin * 8)) / 2 )
+    .attr("y", 15)
     .attr("text-anchor", "middle")
     .text(function(d) { return monthName(d); })
 
-  var rect = svg.selectAll("rect.day")
-    .data(function(d, i) { return d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1)); })
+    var rect = svg.selectAll("rect.day")
+    .data(function(d, i) {
+      return d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1));
+    })
     .enter().append("rect")
-    .attr("class", "day")
-    .attr("width", cellSize)
-    .attr("height", cellSize)
-    .attr("rx", 3).attr("ry", 3) // esquinas redondeadas
-    .attr("fill", '#eaeaea') // relleno gris claro por defecto
-    .attr("y", function(d) { return (day(d) * cellSize) + (day(d) * cellMargin) + cellMargin; })
-    .attr("x", function(d) { return ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellSize) + ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellMargin) + cellMargin ; })
-    .on("mouseover", function(d) {
-      d3.select(this).classed('hover', true);
-    })
-    .on("mouseout", function(d) {
-      d3.select(this).classed('hover', false);
-    })
-    .datum(format);
+      .attr("class", "day")
+      .attr("width", cellSize)
+      .attr("height", cellSize)
+      .attr("rx", 3).attr("ry", 3) // rounded corners
+      .attr("fill", '#eaeaea') // default light grey fill
+      .attr("x", function(d) {
+        return (day(d) * cellSize) + (day(d) * cellMargin) + cellMargin;
+      })
+      .attr("y", function(d) {
+        return ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellSize) +
+               ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellMargin) +
+               cellMargin + 20;
+       })
+      .on("mouseover", function(d) {
+        d3.select(this).classed('hover', true);
+      })
+      .on("mouseout", function(d) {
+        d3.select(this).classed('hover', false);
+      })
+      .datum(format);
 
   rect.append("title")
     .text(function(d) { return titleFormat(new Date(d)); });
@@ -325,20 +282,26 @@ function drawCalendar(dateData){
     })
     .object(dateData);
 
-  var scale = d3.scaleLinear()
+   var scale = d3.scaleLinear()
     .domain(d3.extent(dateData, function(d) { return parseInt(d.Total); }))
-    .range([0,1]); // Rango de colores
+    .range([0,1]); // Se deja el rango completo para que se marque mas la diferencia de colores
+
+    var formatTime = function(input, formatInput, formatOutput){
+    var dateParse = d3.timeParse(formatInput);
+    var dateFormat = d3.timeFormat(formatOutput);
+    return dateFormat(dateParse(input));
+};
 
   rect.filter(function(d) { return d in lookup; })
     .style("fill", function(d) { return d3.interpolatePuBu(scale(lookup[d])); })
     .select("title")
-    .text(function(d) { return titleFormat(new Date(d)) + ":  " + lookup[d]; });
-
+    .text(function(d) { 
+    return formatTime(d,"%d-%m-%Y","%a, %d-%b") + ":  " + lookup[d]; });
 }
 
-// carga del archivo en formato csv
 d3.csv("accidentes_diarios_bogota.csv", function(response){
   drawCalendar(response);
 })
-
 </script>
+
+
