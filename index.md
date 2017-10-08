@@ -194,7 +194,7 @@ function type(d, _, columns) {
 }
 
 </script>
-
+</html>
 
 ## Insights
 
