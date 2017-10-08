@@ -54,7 +54,7 @@ Hipotesis: las localidades con mayor población presentan mayor cantidad de acci
 }
 
 </style>
-<svg width="760" height="500"></svg>
+<svg width="640" height="500"></svg>
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script>
 
