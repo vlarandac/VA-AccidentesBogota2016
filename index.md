@@ -1,5 +1,5 @@
 
-# - Periodos de mayor accidentalidad en la ciudad de Bogotá en el año 2016 -
+# Accidentalidad en Bogotá en el año 2016 
 
 ## Definición de Accidentes de Tránsito
 
@@ -21,7 +21,8 @@ La fecha de carga del dataset fue el 11 de mayo de 2017 y fué la única carga q
 Hipotesis: Existen meses del año y días en los cuales se presentan mayor cantidad de accidentes.
 
 ## Análisis e Insights
-
+         	 
+<title>Accidentalidad por localidad en Bogotá en el año 2016</title>
 <html lang="en">
 <meta charset="utf-8">
 <style>
@@ -41,9 +42,10 @@ Hipotesis: Existen meses del año y días en los cuales se presentan mayor canti
     stroke: #ed1e79; 
     stroke-width: 3;
 }
-
-
 </style>
+<div>
+<h4>Accidentalidad por localidad en Bogotá en el año 2016</h4>
+</div>
 <svg width="640" height="500"></svg>
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script>
@@ -149,6 +151,10 @@ Podemos observar que para el año 2016 existe una clara evidencia de cuáles fue
 De acuerdo con nuestra gráfica podemos decir que varis de las localidades permanecieron con una cifra entre los 50 y 100 accidentes mensuales a lo largo del año, como es el caso de Tunjuelito, Rafael Uribe Uribe, Santa Fe, San Cristobal, Antonio Nariño y Usme. Y localidades como Suba, Fontibón, Puente Aranda y Chapinero fluctúan entre los 100 y 250 accidentes mensuales a lo largo del año. 
 
 De igual manera podemos ver en la siguiente gráfica cómo estuvieron distribuidos los accidentes a los largo del año en toda la ciudad, y al igual que en la gráfica anterior es de notar que hacia el final de año, en los meses de octubre, noviembre y diciembre se presentaron la mayor cantidad de accidentes. 
+
+<div>
+<h4>Accidentalidad por día</h4>
+</div>
 
 <style>
 #calendar {
@@ -277,4 +283,11 @@ d3.csv("accidentes_diarios_bogota.csv", function(response){
 })
 </script>
 
+<div class="jumbotron" ng-show="isSet(1)">
 
+          	<p>Vivian Lucia Aranda</p>
+			<p>{vl.aranda140}@uniandes.edu.co</p>
+			<p>ISIS4822 – Visual Analytics - 20172 </p>			
+            <br/><br/>
+            <p>Universidad de los Andes, Bogotá, Colombia</p>
+      </div>
