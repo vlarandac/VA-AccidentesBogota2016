@@ -15,10 +15,10 @@ El datasset elegido esta compuesto por 34931 Filas y 38 Columnas que presentan l
 La fecha de carga del dataset fue el 11 de mayo de 2017 y fué la única carga que se hizo.
 
 ### Lo que se espera lograr:
-○ Comparar los días en los cuales se presentaron más accidentes durante el año 2016 en la ciudad de Bogotá.
+○ Comparar los días en los cuales se presentaron más accidentes durante el año 2016 en la ciudad de Bogotá.<br/>
 ○ Presentar cuáles fueron las localidades de Bogotá con mayor cantidad de accidentes para los distintos meses del año 2016.
-
-Hipotesis 1: Las localidades con mayor canidad de accidentes son las que mayor población residente tienen.
+<br/><br/>
+Hipotesis 1: Las localidades con mayor canidad de accidentes son las que mayor población residente tienen.<br/><br/>
 Hipotesis 2: Existen meses del año y días en los cuales se presentan mayor cantidad de accidentes.
 
 ### Análisis e Insights
@@ -147,7 +147,7 @@ function type(d, _, columns) {
 </html>
 
 
-Podemos observar que para el año 2016 existe una clara evidencia de cuáles fueron las localidades con mayor y menor cantidad de accidentes reportados, así vemos que la clara tendencia es que la localidad con menos cantidad de accidentes reportados es la localidad de La Candelaria, la cual presenta por gran diferencia muchos menos accidentes que las demás localidades, y es un comportamiento que se mantiene a lo largo de todo el año.   Así mismo se puede ver que la localidad que mayor cantidad de accidentes reportó fue la localidad de Kennedy, que junto con la localidad de Suba y Engativa reportaron una cifra cercana a los 220 accidentes al iniciar el año, y posteriormente presentaron un incremento más notorio en los meses de mayo y noviembre para Kennedy, y en abril, julio y octubre para Engativa.   
+Podemos observar que para el año 2016 existe una clara evidencia de cuáles fueron las localidades con mayor y menor cantidad de accidentes reportados, así vemos que la localidad con menos cantidad de accidentes reportados es la localidad de La Candelaria, la cual presenta por gran diferencia muchos menos accidentes que las demás localidades, y es un comportamiento que se mantiene a lo largo de todo el año.   Así mismo se puede ver que la localidad que mayor cantidad de accidentes reportó fue la localidad de Kennedy, que junto con la localidad de Suba y Engativa reportaron una cifra cercana a los 220 accidentes al iniciar el año, y posteriormente presentaron un incremento más notorio en los meses de mayo y noviembre para Kennedy, y en abril, julio y octubre para Engativa.   
 
 De acuerdo con nuestra gráfica podemos decir que varias de las localidades permanecieron con una cifra entre los 50 y 100 accidentes mensuales a lo largo del año, como es el caso de Tunjuelito, Rafael Uribe Uribe, Santa Fe, San Cristobal, Antonio Nariño y Usme. Y localidades como Fontibón, Puente Aranda y Chapinero fluctúan entre los 100 y 250 accidentes mensuales a lo largo del año. 
 
