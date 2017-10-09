@@ -284,8 +284,7 @@ d3.csv("accidentes_diarios_bogota.csv", function(response){
 })
 </script>
 
-De acuerdo con la Secretaría Distrital de Planeación en su [Boletin 69 de Proyecciones de opblación por Localidades](http://www.sdp.gov.co/portal/page/portal/PortalSDP/InformacionTomaDecisiones/Estadisticas/Bogot%E1%20Ciudad%20de%20Estad%EDsticas/2014/Bolet%EDn69.pdf)
-se indica que cinco las localidades con mayor población proyectada para 2016 fueron Suba(1.250.734), Kennedy (1.187.315), Usaquen (472.908), Engativa (873.243) y Fontibón (403.519), lo cual nos permite validar nuestra hipótesis de que las localidades con mayor población son las que reportan mayor cantidad de accidentes. 
+De acuerdo con la Secretaría Distrital de Planeación en su Boletin 69 de Proyecciones de población por Localidades emitido en diciembre de 2014, las tres localidades con mayor población proyectada para 2016 fueron Suba(1.250.734), Kennedy (1.187.315) y Engativa (873.243), lo cual nos permite validar nuestra hipótesis de que las localidades con mayor población son las que reportan mayor cantidad de accidentes. 
 <br/><br/>
 Vivian Lucia Aranda<br/>
 201022509<br/>
