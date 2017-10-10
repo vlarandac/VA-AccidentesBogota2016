@@ -181,7 +181,6 @@ De igual manera podemos ver en la siguiente gráfica cómo estuvieron distribuid
 <body>
 
 <div id="calendar"></div>
-<svg width="640" height="500"></svg>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
