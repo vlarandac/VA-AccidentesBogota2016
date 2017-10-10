@@ -154,7 +154,7 @@ De acuerdo con nuestra gráfica podemos decir que varias de las localidades perm
 De igual manera podemos ver en la siguiente gráfica cómo estuvieron distribuidos los accidentes a los largo del año en toda la ciudad, y al igual que en la gráfica anterior es de notar que hacia el final de año, en los meses de octubre, noviembre y diciembre se presentaron la mayor cantidad de accidentes. 
 
 <div>
-<h4>Accidentalidad diaria en 2016</h4>
+<h4>Accidentalidad diaria en Bogotá en 2016</h4>
 </div>
 
 <style>
@@ -181,6 +181,7 @@ De igual manera podemos ver en la siguiente gráfica cómo estuvieron distribuid
 <body>
 
 <div id="calendar"></div>
+<svg width="640" height="500"></svg>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
