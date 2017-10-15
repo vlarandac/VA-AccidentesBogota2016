@@ -23,6 +23,16 @@ Hipotesis 2: Existen meses del año y días en los cuales se presentan mayor can
 
 ### Análisis e Insights
          	 
+<!-- 
+by:oswaldovh69
+Desde el punto de vista de la estructura del proyecto y de los roles de quienes intervienen en él, es conveniente
+incluir el código JavaScript (Funcionalidad) en un archivo independiente del código HTML (Presentación), de tal
+manera que se puede cambiar el comportamiento o funcionalidad de lo que sea dinámico (JS) sin necesidad de modificar nada que tenga 
+que ver con el Front-End.
+Esta buena práctica también aplica para el "maquetado" de la página, en que el componente CCS puede "aislarse" de las otras capas, el que sea posible cambiar el aspecto con mucha facilidad sin leer tanto código.
+-->
+                    
+                   
 <title>Accidentalidad por localidad en Bogotá en el año 2016</title>
 <html lang="en">
 <meta charset="utf-8">
